@@ -1,4 +1,20 @@
-from solution import expand_universe, find_galaxies, find_distances
+from solution import expand_universe, find_galaxies, find_distances, find_distances_2, find_empty_sections
+
+def test_find_empty_sections():
+    original = [
+        "...#......",
+        ".......#..",
+        "#.........",
+        "..........",
+        "......#...",
+        ".#........",
+        ".........#",
+        "..........",
+        ".......#..",
+        "#...#....."
+    ]
+
+    assert find_empty_sections(original) == ([3, 7], [2, 5, 8])
 
 def test_expand_universe():
     original = [
@@ -88,3 +104,33 @@ def test_find_distances():
     }
 
     assert find_distances(galaxies) == expected
+
+
+def test_find_distances_2():
+    galaxies = {
+        (0, 3): [],
+        # (1, 7): [],
+        (2, 0): [],
+        # (4, 6): [],
+        # (5, 1): [],
+        # (6, 9): [],
+        (8, 7): [],
+        # (9, 0): [],
+        # (9, 4): []
+    }
+
+    empty_sections = ([3, 7], [2, 5, 8])
+
+    expected = {
+        (0, 3): [6, 15],
+        # (1, 7): [],
+        (2, 0): [17],
+        # (4, 6): [],
+        # (5, 1): [],
+        # (6, 9): [],
+        (8, 7): [],
+        # (9, 0): [],
+        # (9, 4): []
+    }
+
+    assert find_distances_2(galaxies, empty_sections, 2) == expected

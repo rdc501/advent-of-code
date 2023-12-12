@@ -55,15 +55,25 @@ def create_potential_combination(input, values):
     return "".join(input_list)
 
 
+def unfold(row):
+    input = row.split(" ")[0]
+    pattern = row.split(" ")[1]
+
+    return "?".join([input] * 5),  ",".join([pattern] * 5)
+
+
 if __name__ == "__main__":
     file = open("input.txt", "r")
     file_lines = file.readlines()
 
+    row_index = 1
     combinations = []
     for row in file_lines:
-        input = row.split(" ")[0]
-        pattern = row.split(" ")[1]
-
+        # input = row.split(" ")[0]
+        # pattern = row.split(" ")[1]
+        input, pattern = unfold(row)
+        print(row_index)
         combinations.append(create_combinations(input, pattern))
+        row_index += 1
 
     print(sum([len(c) for c in combinations]))

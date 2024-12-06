@@ -13,10 +13,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="inputs\day_one_puzzle_one.txt">
+      <None Update="inputs\day_one.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="inputs\day_two_puzzle_one.txt">
+      <None Update="inputs\day_two.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="inputs\day_three.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

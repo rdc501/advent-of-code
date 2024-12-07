@@ -1,10 +1,10 @@
 namespace _2024;
 
-public class DayOnePuzzleTwo
+public class Day1Puzzle2
 {
     public static string Execute()
     {
-        var (firstList, secondList) = DayOnePuzzleOne.GetSortedLists();
+        var (firstList, secondList) = Day1Puzzle1.GetSortedLists();
 
         var result = 0;
         

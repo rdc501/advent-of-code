@@ -1,6 +1,6 @@
 namespace _2024;
 
-public static class DayOnePuzzleOne
+public static class Day1Puzzle1
 {
     public static string Execute()
     {

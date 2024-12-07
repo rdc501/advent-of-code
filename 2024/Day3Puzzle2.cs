@@ -8,7 +8,7 @@ public class Day3Puzzle2
     {
         _mulEnabled = true;
         
-        var lines = File.ReadAllLines("inputs/day_three.txt");
+        var lines = File.ReadAllLines("inputs/day3.txt");
         
         var muls = new List<(int, int, string)>();
 

@@ -4,7 +4,7 @@ public class Day3Puzzle1
 {
     public static string Execute()
     {
-        var lines = File.ReadAllLines("inputs/day_three.txt");
+        var lines = File.ReadAllLines("inputs/day3.txt");
         
         var muls = new List<(int, int, string)>();
 

@@ -24,3 +24,15 @@ if __name__ == "__main__":
 
     print(winning_combinations)
     print(reduce(lambda x, y: x*y, winning_combinations))
+
+    time = int(''.join([time for time in file_lines[0].rstrip().split(':')[1].split(' ') if time != '']))
+    distance = int(''.join([time for time in file_lines[1].rstrip().split(':')[1].split(' ') if time != '']))
+
+    seconds_attempt = 1
+    winning_combination = 0
+    while seconds_attempt < time:
+        if seconds_attempt * (time - seconds_attempt) > distance:
+            winning_combination += 1
+        seconds_attempt += 1
+
+    print(winning_combination)

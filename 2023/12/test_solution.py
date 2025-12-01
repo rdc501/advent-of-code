@@ -1,4 +1,4 @@
-from solution import is_match, create_combinations
+from solution import is_match, create_combinations, unfold
 import pytest
 
 @pytest.mark.parametrize(
@@ -29,3 +29,10 @@ def test_create_combinations():
         ".###....##.#"
     ]
     assert create_combinations(input, pattern) == expected
+
+@pytest.mark.parametrize(
+    "row, expected_input, expected_pattern", [(".# 1", ".#?.#?.#?.#?.#", "1,1,1,1,1"),
+                                              ("???.### 1,1,3", "???.###????.###????.###????.###????.###", "1,1,3,1,1,3,1,1,3,1,1,3,1,1,3")]
+)
+def test_unfold(row, expected_input, expected_pattern):
+    assert unfold(row) == (expected_input, expected_pattern)

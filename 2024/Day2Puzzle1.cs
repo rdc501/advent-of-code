@@ -1,6 +1,6 @@
 namespace _2024;
 
-public static class DayTwoPuzzleTwo
+public static class Day2Puzzle1
 {
     public static string Execute()
     {
@@ -15,43 +15,28 @@ public static class DayTwoPuzzleTwo
         return count.ToString();
     }
 
-    private static bool IsReportSafe(List<int> report)
-    {
-        var x = new List<int>();
-
-        for (var i = 0; i < report.Count; i++)
-        {
-            var newReport = new List<int>(report);
-            newReport.RemoveAt(i);
-
-            x.Add(GetFailedLevels(newReport).Count);
-        }
-
-        return x.Contains(0);
-    }
-
-    private static List<int> GetFailedLevels(List<int> report)
+    public static bool IsReportSafe(List<int> report)
     {
         const int minSafeDiff = 1;
         const int maxSafeDiff = 3;
-        
         var increasing = report[0] < report[1];
-    
-        var result = new List<int>();
-    
+
+        var result = true;
+
         for (var i = 1; i < report.Count; i++)
         {
             if (increasing != report[i - 1] < report[i])
             {
-                result.Add(i);
-                continue;
+                result = false;
+                break;
             }
             
             var diff = Math.Abs(report[i] - report[i - 1]);
-    
+
             if (diff < minSafeDiff || diff > maxSafeDiff)
             {
-                result.Add(i);
+                result = false;
+                break;
             }
         }
         

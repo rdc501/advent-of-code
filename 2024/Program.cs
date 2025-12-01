@@ -15,6 +15,8 @@ public static class Program
                     .AddChoices(new[] {
                         "day one puzzle one",
                         "day one puzzle two",
+                        "day two puzzle one",
+                        "day two puzzle two"
                     }));
             
             AnsiConsole.MarkupLine($"[green]Selected:[/] {selectedTask}");
@@ -23,6 +25,8 @@ public static class Program
             {
                 "day one puzzle one" => DayOnePuzzleOne.Execute(),
                 "day one puzzle two" => DayOnePuzzleTwo.Execute(),
+                "day two puzzle one" => DayTwoPuzzleOne.Execute(),
+                "day two puzzle two" => DayTwoPuzzleTwo.Execute(),
                 _ => throw new NotImplementedException()
             };
             

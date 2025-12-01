@@ -316,7 +316,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ## [gitignore covers JetBrains IDEs above]
-## 
+##
 ## [dotnet generated gitignore below]
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -796,3 +796,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Rust build artifacts
+/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo lock file (optional - see note below)
+Cargo.lock

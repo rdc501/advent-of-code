@@ -4,7 +4,7 @@ public static class Day2Puzzle2
 {
     public static string Execute()
     {
-        var lines = File.ReadAllLines("inputs/day_two.txt");
+        var lines = File.ReadAllLines("inputs/day2.txt");
 
         var count = lines.Select(line => line.Split(" ")
                 .Where(x => !string.IsNullOrWhiteSpace(x))

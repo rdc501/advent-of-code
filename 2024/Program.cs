@@ -18,7 +18,9 @@ public static class Program
                         "day two puzzle one",
                         "day two puzzle two",
                         "day three puzzle one",
-                        "day three puzzle two"
+                        "day three puzzle two",
+                        "day four puzzle one",
+                        "day four puzzle two"
                     }));
             
             AnsiConsole.MarkupLine($"[green]Selected:[/] {selectedTask}");
@@ -31,6 +33,8 @@ public static class Program
                 "day two puzzle two" => Day2Puzzle2.Execute(),
                 "day three puzzle one" => Day3Puzzle1.Execute(),
                 "day three puzzle two" => Day3Puzzle2.Execute(),
+                "day four puzzle one" => Day4Puzzle1.Execute(),
+                "day four puzzle two" => Day4Puzzle2.Execute(),
                 _ => throw new NotImplementedException()
             };
             

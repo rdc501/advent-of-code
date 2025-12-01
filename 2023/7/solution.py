@@ -66,28 +66,30 @@ class Hand():
             self.card_counts[card] = self.card_counts.get(card, 0) + 1
 
     def highest_number_of_cards(self):
-        # key = max(self.card_counts, key=self.card_counts.get)
-        # return self.card_counts[key]
         def fu(e):
             return e[1]
 
-        z = list(self.card_counts.items())
+        z = [item for item in self.card_counts.items() if item[0] != 'J']
         z.sort(key=fu, reverse=True)
-        return z[0][1]
+
+        if len(z) != 0:
+            return z[0][1] + self.number_of_jokers()
+        else:
+            return 5
 
     def second_highest_number_of_cards(self):
-        # key = max(self.card_counts, key=self.card_counts.get)
-        # return self.card_counts[key]
         def fu(e):
             return e[1]
 
-        z = list(self.card_counts.items())
+        z = [item for item in self.card_counts.items() if item[0] != 'J']
         z.sort(key=fu, reverse=True)
         return z[1][1]
 
+    def number_of_jokers(self):
+        return self.card_counts.get('J', 0)
+
     def cards_value(self):
-        card_types = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
-        # return card_types.index(self.original[0])
+        card_types = ['J', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'Q', 'K', 'A']
         result = ''
         for card in self.original[:5]:
             result += str(card_types.index(card)).zfill(2)
@@ -97,10 +99,10 @@ class Hand():
 
 
 
+if __name__ == "__main__":
+    file = open("input.txt", "r")
+    file_lines = file.readlines()
 
-file = open("input.txt", "r")
-file_lines = file.readlines()
-
-hand_types = get_hand_types(file_lines)
-winnings = calculate_winnings(hand_types)
-print(winnings)
+    hand_types = get_hand_types(file_lines)
+    winnings = calculate_winnings(hand_types)
+    print(winnings)

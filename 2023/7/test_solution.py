@@ -11,15 +11,18 @@ A8342 12
 AAAAA 433
 34QQQ 682
 32QQQ 685
+JJJJJ 785
 4QQ44 124
 44474 625"""
 
+    # hands = "JJJJJ 785"
+
     expected = {
-        'five': ["AAAAA 433"],
-        'four': ["44474 625"],
+        'five': ["JJJJJ 785", "AAAAA 433"],
+        'four': ["44474 625", "T55J5 684", "QQQJA 483", "KTJJT 220"],
         'full_house': ["4QQ44 124"],
-        'three': ["32QQQ 685", "34QQQ 682", "T55J5 684", "QQQJA 483"],
-        'two_pair': ["KTJJT 220", "KK677 28"],
+        'three': ["32QQQ 685", "34QQQ 682"],
+        'two_pair': ["KK677 28"],
         'one_pair': ["32T3K 765"],
         'highest_card': ["A8342 12"]
     }
@@ -48,4 +51,4 @@ QQQJA 483"""
 
     hand_types = get_hand_types(hands.splitlines())
 
-    assert calculate_winnings(hand_types) == 6440
+    assert calculate_winnings(hand_types) == 5905

@@ -13,7 +13,7 @@ public static class DayOnePuzzleOne
     
     public static (List<int>, List<int>) GetSortedLists()
     {
-        var lines = File.ReadAllLines("inputs/day_one_puzzle_one.txt");
+        var lines = File.ReadAllLines("inputs/day_one.txt");
 
         var firstList = new List<int>();
         var secondList = new List<int>();

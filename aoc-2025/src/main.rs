@@ -7,5 +7,5 @@ mod day2 {
 // }
 
 fn main() {
-    day2::solution::puzzle_1();
+    day2::solution::puzzle_2();
 }

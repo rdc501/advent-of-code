@@ -3,5 +3,5 @@ mod day5 {
 }
 
 fn main() {
-    day5::solution::puzzle_1();
+    day5::solution::puzzle_2();
 }

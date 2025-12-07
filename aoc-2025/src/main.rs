@@ -1,7 +1,7 @@
-mod day5 {
+mod day6 {
     pub mod solution;
 }
 
 fn main() {
-    day5::solution::puzzle_2();
+    println!("Answer: {}", day6::solution::puzzle_1());
 }

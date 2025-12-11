@@ -3,5 +3,5 @@ mod day7 {
 }
 
 fn main() {
-    println!("Answer: {}", day7::solution::puzzle_1());
+    println!("Answer: {}", day7::solution::puzzle_2());
 }

@@ -97,6 +97,95 @@ circuit_sizes.reverse();
     answer
 }
 
+pub fn puzzle_2() -> i64 {
+    let contents = include_str!("input.txt");
+
+    let mut circuits: Vec<HashSet<&str>> = Vec::new();
+    let mut distances : HashMap<String, f64> = HashMap::new();
+
+
+    for line_a in contents.lines() {
+        // Populate the circuits. They all start as size 1
+        circuits.push([line_a].into_iter().collect());
+
+        // Populate the distances between each pair of junction boxes
+        for line_b in contents.lines() {
+            if line_a != line_b {
+                distances.insert(
+                    calculate_distance_key(line_a, line_b),
+                    calculate_distance(line_a, line_b)
+                );
+            }
+        }
+    }
+
+    // Sort the distances
+    let mut sorted_distances: Vec<_> = distances
+        .iter()
+        .filter(|(_, v)| !v.is_nan())
+        .collect();
+
+    sorted_distances.sort_by(
+        |a, b| a.1.partial_cmp(b.1).unwrap()
+    );
+
+    // Make the required number of connections between junction boxes
+    let mut connections = 0;
+    let mut answer: i64 = 0;
+
+    while connections < sorted_distances.len()
+        && circuits.len() > 1
+    {
+        let (key, _) = sorted_distances[connections];
+        let (a, b) = key.split_once('|').unwrap();
+
+        // Find the existing circuit containing junction box a
+        let a_circuit_index = circuits
+            .iter()
+            .position(|x| x.contains(a))
+            .unwrap();
+
+        // Clone the circuit containing junction box a
+        let a_circuit = circuits[a_circuit_index].clone();
+
+        // If junction box a is not in the same circuit as b then delete it
+        if !a_circuit.contains(b) {
+            circuits.remove(a_circuit_index);
+        }
+
+        // Find the existing circuit containing junction box b
+        let b_circuit_index = circuits
+            .iter()
+            .position(|x| x.contains(b))
+            // .find(|x| x.contains(b))
+            .unwrap();
+
+        // Clone the circuit containing junction box b
+        let b_circuit = circuits[b_circuit_index].clone();
+
+        // Delete the circuit
+        circuits.remove(b_circuit_index);
+
+        // Make a new circuit containing all the values from the existing circuits
+        let new_circult: HashSet<&str> = a_circuit
+            .into_iter()
+            .chain(
+                b_circuit
+                    .into_iter()
+            ).collect();
+
+        circuits.push(new_circult);
+        connections += 1;
+
+        let (a_x, _) = a.split_once(',').unwrap();
+        let (b_x, _) = b.split_once(',').unwrap();
+
+        answer = a_x.parse::<i64>().unwrap() * b_x.parse::<i64>().unwrap();
+    }
+
+    answer
+}
+
 fn calculate_distance_key(a: &str, b: &str) -> String {
     if a < b {
         format!("{}|{}", a, b)
